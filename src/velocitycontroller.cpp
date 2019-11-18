@@ -12,23 +12,23 @@ int main(int argc, char **argv)
 {
 ros::init(argc, argv, "velocitycontrol");
 
-ros::NodeHandle n;
+ros::NodeHandle n; //Enables ROS nodes
 
 float DistanceToFace = 1; //Data from sensors
 ros::Rate loop_rate(2); //Update rate
 
 while (ros::ok())
   {
-ros::Subscriber sub = n.subscribe("/sensorPosition", 1000, SetParameters);
+ros::Subscriber sub = n.subscribe("/sensorPosition", 1000, SetParameters); //Subscribe to topic /sensorPosition
 ros::spinOnce();
-loop_rate.sleep();
+loop_rate.sleep(); //Delay function
   }
 }
 
 
-void SetParameters(){
+void SetParameters(){ //Function that sets parameters. Sends to parameter server.
 
-  n.setParam("max_vel_x", to_string(-(1.8/0.7)*(DistanceToFace)+3.78));
+  n.setParam("max_vel_x", to_string(-(1.8/0.7)*(DistanceToFace)+3.78)); //linear math function to set speed depending on distance (ax+b)
 /*
   if(DistanceToFace > 3) { // Checks DistanceToFace float and publishes fitting velocity parameters.
     n.setParam("max_vel_x", "0.0"); // 0% of max speed
