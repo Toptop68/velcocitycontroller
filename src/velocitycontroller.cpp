@@ -15,7 +15,7 @@ ros::init(argc, argv, "velocitycontrol");
 ros::NodeHandle n;
 
 float DistanceToFace = 1; //Data from sensors
-ros::Rate loop_rate(2);
+ros::Rate loop_rate(2); //Update rate
 
 while (ros::ok())
   {
