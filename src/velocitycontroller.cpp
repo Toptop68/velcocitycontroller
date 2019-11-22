@@ -7,6 +7,7 @@
 #include <people_msgs/PositionMeasurement.h>
 
 using namespace std;
+void setParameters();
 
 int main(int argc, char **argv)
 {
